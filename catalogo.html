@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Imóveis - Sem Mapa</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="bg-slate-50 antialiased overflow-x-hidden">
+  
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const CatalogPage = () => {
+      // Dados simulados para popular o catálogo
+      const properties = [
+        {
+          id: 1,
+          title: "Apartamento T3 com Varanda Gourmet e Vista Mar",
+          location: "Avenida Atlântica, Vila Nova de Gaia",
+          price: "450.000",
+          condo: "Condomínio: € 120/mês",
+          area: "120 m²",
+          beds: 3,
+          baths: 2,
+          parking: 2,
+          image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          badge: "Exclusividade"
+        },
+        {
+          id: 2,
+          title: "Moradia Contemporânea com Piscina e Jardim",
+          location: "Foz do Douro, Porto",
+          price: "1.250.000",
+          condo: "Sem condomínio",
+          area: "350 m²",
+          beds: 4,
+          baths: 5,
+          parking: 4,
+          image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          badge: "Novo"
+        },
+        {
+          id: 3,
+          title: "Apartamento T2 Renovado no Centro Histórico",
+          location: "Baixa, Porto",
+          price: "280.000",
+          condo: "Condomínio: € 45/mês",
+          area: "85 m²",
+          beds: 2,
+          baths: 1,
+          parking: 0,
+          image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          badge: "Baixou o Preço"
+        },
+        {
+          id: 4,
+          title: "Cobertura Duplex com Terraço Panorâmico",
+          location: "Matosinhos Sul, Matosinhos",
+          price: "890.000",
+          condo: "Condomínio: € 180/mês",
+          area: "210 m²",
+          beds: 3,
+          baths: 4,
+          parking: 3,
+          image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          badge: null
+        },
+        {
+          id: 5,
+          title: "Loft Industrial com Pé Direito Duplo",
+          location: "Bonfim, Porto",
+          price: "320.000",
+          condo: "Condomínio: € 60/mês",
+          area: "95 m²",
+          beds: 1,
+          baths: 2,
+          parking: 1,
+          image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          badge: null
+        }
+      ];
+
+      return (
+        <div className="flex flex-col min-h-screen bg-slate-50 font-sans text-slate-800">
+          
+          {/* HEADER FIXO */}
+          <header className="border-b border-slate-200 py-4 px-6 bg-white z-50 sticky top-0">
+            <div className="max-w-[1400px] mx-auto flex justify-between items-center">
+              <div className="font-bold text-2xl text-emerald-600">Imobiliária<span className="text-slate-800">Premium</span></div>
+              <nav className="hidden md:flex gap-6 text-sm font-medium text-slate-600">
+                <a href="#" className="hover:text-emerald-600 transition">Comprar</a>
+                <a href="#" className="hover:text-emerald-600 transition">Alugar</a>
+                <a href="#" className="hover:text-emerald-600 transition">Anunciar</a>
+              </nav>
+              <div className="flex items-center gap-4">
+                 <button className="hidden md:block text-slate-600 hover:text-emerald-600 font-medium">Entrar</button>
+                 <button className="md:hidden text-slate-600"><i className="ph ph-list text-2xl"></i></button>
+              </div>
+            </div>
+          </header>
+
+          {/* BARRA DE BUSCA E FILTROS */}
+          <div className="bg-white border-b border-slate-200 sticky top-[65px] z-40 shadow-sm">
+            <div className="max-w-[1400px] mx-auto px-4 py-4 flex flex-col md:flex-row gap-4 items-center">
+              
+              {/* Input Principal */}
+              <div className="relative w-full md:flex-1">
+                <i className="ph ph-magnifying-glass absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 text-xl"></i>
+                <input 
+                  type="text" 
+                  placeholder="Digite cidade, bairro ou código..." 
+                  className="w-full pl-12 pr-4 py-3 bg-slate-100 border-none rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-700 font-medium transition"
+                  defaultValue="Porto e Região"
+                />
+              </div>
+
+              {/* Filtros Rápidos (Desktop) */}
+              <div className="hidden md:flex gap-3 w-full md:w-auto">
+                <select className="px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-700 font-medium focus:ring-2 focus:ring-emerald-500 outline-none cursor-pointer">
+                  <option>Comprar</option>
+                  <option>Alugar</option>
+                </select>
+                <select className="px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-700 font-medium focus:ring-2 focus:ring-emerald-500 outline-none cursor-pointer">
+                  <option>Até € 500.000</option>
+                  <option>Até € 1.000.000</option>
+                  <option>Sem limite</option>
+                </select>
+                <select className="px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-700 font-medium focus:ring-2 focus:ring-emerald-500 outline-none cursor-pointer">
+                  <option>Quartos</option>
+                  <option>1+</option>
+                  <option>2+</option>
+                  <option>3+</option>
+                </select>
+                <button className="px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-700 font-medium hover:bg-slate-50 transition flex items-center gap-2">
+                  <i className="ph ph-sliders-horizontal text-lg"></i> Filtros Avançados
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* ÁREA PRINCIPAL: GRID DE IMÓVEIS (LARGURA TOTAL) */}
+          <div className="flex flex-1 max-w-[1400px] w-full mx-auto relative p-4 md:p-6 pb-24 lg:pb-12">
+            
+            <div className="w-full">
+              
+              {/* Header do Grid (Resultados e Ordenação) */}
+              <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-8 gap-4 border-b border-slate-200 pb-4">
+                <h1 className="text-2xl font-bold text-slate-900">
+                  {properties.length} imóveis encontrados <span className="text-slate-500 font-normal text-lg">em Porto e Região</span>
+                </h1>
+                <div className="flex items-center gap-2">
+                  <span className="text-sm text-slate-500">Ordenar por:</span>
+                  <select className="bg-transparent text-slate-800 font-semibold outline-none cursor-pointer">
+                    <option>Mais Relevantes</option>
+                    <option>Menor Preço</option>
+                    <option>Maior Preço</option>
+                    <option>Mais Recentes</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Grid de Cards - Ajustado para 1 a 4 colunas dependendo da tela */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                {properties.map((prop) => (
+                  <div key={prop.id} className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer flex flex-col h-full">
+                    
+                    {/* Imagem do Card */}
+                    <div className="relative h-60 overflow-hidden bg-slate-200">
+                      <img src={prop.image} alt={prop.title} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                      
+                      {/* Badges */}
+                      {prop.badge && (
+                        <div className="absolute top-3 left-3 bg-emerald-500 text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-sm">
+                          {prop.badge}
+                        </div>
+                      )}
+                      
+                      {/* Botão Favoritar */}
+                      <button className="absolute top-3 right-3 p-2 bg-white/90 backdrop-blur-sm rounded-full text-slate-400 hover:text-red-500 transition shadow-sm">
+                        <i className="ph ph-heart text-xl"></i>
+                      </button>
+
+                      {/* Contador de Fotos */}
+                      <div className="absolute bottom-3 right-3 bg-slate-900/80 text-white text-xs px-2 py-1 rounded-md flex items-center gap-1 backdrop-blur-sm">
+                        <i className="ph ph-camera"></i> 12
+                      </div>
+                    </div>
+
+                    {/* Informações do Card */}
+                    <div className="p-5 flex-1 flex flex-col">
+                      <h3 className="text-3xl font-extrabold text-slate-900 mb-1">€ {prop.price}</h3>
+                      <p className="text-slate-500 text-xs font-medium mb-3">{prop.condo}</p>
+                      
+                      <h4 className="text-lg font-bold text-slate-800 leading-tight mb-2 line-clamp-2 group-hover:text-emerald-600 transition">
+                        {prop.title}
+                      </h4>
+                      <p className="text-slate-500 text-sm flex items-center gap-1 mb-6 mt-auto">
+                        <i className="ph ph-map-pin text-emerald-600 text-lg"></i> {prop.location}
+                      </p>
+                      
+                      {/* Ícones de Características */}
+                      <div className="flex items-center justify-between pt-4 border-t border-slate-100 text-slate-600 font-medium">
+                        <span className="flex items-center gap-1.5" title="Área"><i className="ph ph-corners-out text-xl text-slate-400"></i> {prop.area}</span>
+                        <span className="flex items-center gap-1.5" title="Quartos"><i className="ph ph-bed text-xl text-slate-400"></i> {prop.beds}</span>
+                        <span className="flex items-center gap-1.5" title="Casas de Banho"><i className="ph ph-bathtub text-xl text-slate-400"></i> {prop.baths}</span>
+                        <span className="flex items-center gap-1.5" title="Vagas"><i className="ph ph-car text-xl text-slate-400"></i> {prop.parking}</span>
+                      </div>
+                    </div>
+
+                  </div>
+                ))}
+              </div>
+
+              {/* Paginação */}
+              <div className="mt-12 flex justify-center items-center gap-2">
+                <button className="p-2 border border-slate-200 rounded-lg text-slate-400 hover:bg-slate-50 disabled:opacity-50"><i className="ph ph-caret-left text-lg"></i></button>
+                <button className="w-10 h-10 bg-emerald-600 text-white font-bold rounded-lg shadow-md">1</button>
+                <button className="w-10 h-10 bg-white border border-slate-200 text-slate-600 font-medium rounded-lg hover:bg-slate-50 transition">2</button>
+                <button className="w-10 h-10 bg-white border border-slate-200 text-slate-600 font-medium rounded-lg hover:bg-slate-50 transition">3</button>
+                <span className="text-slate-400 mx-1">...</span>
+                <button className="w-10 h-10 bg-white border border-slate-200 text-slate-600 font-medium rounded-lg hover:bg-slate-50 transition">10</button>
+                <button className="p-2 border border-slate-200 rounded-lg text-slate-600 hover:bg-slate-50"><i className="ph ph-caret-right text-lg"></i></button>
+              </div>
+
+            </div>
+
+          </div>
+
+          {/* BOTÃO FLUTUANTE MOBILE (Apenas telas pequenas) */}
+          <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 md:hidden">
+            <button className="bg-slate-900 text-white px-8 py-3 rounded-full font-bold shadow-2xl flex items-center gap-2 hover:bg-slate-800 transition border border-slate-700">
+              <i className="ph ph-sliders-horizontal text-xl"></i> Filtros
+            </button>
+          </div>
+
+        </div>
+      );
+    };
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<CatalogPage />);
+  </script>
+</body>
+</html>
