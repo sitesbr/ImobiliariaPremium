@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imobiliária Premium - Página Inicial</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="bg-slate-50 antialiased overflow-x-hidden font-sans text-slate-800">
+  
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const HomePage = () => {
+      
+      // Imóveis de Destaque (Mesma estrutura aprovada do catálogo)
+      const featuredProperties = [
+        {
+          id: 1,
+          title: "Apartamento T3 com Varanda Gourmet e Vista Mar",
+          location: "Avenida Atlântica, Vila Nova de Gaia",
+          price: "450.000",
+          condo: "Condomínio: € 120/mês",
+          area: "120 m²",
+          beds: 3,
+          baths: 2,
+          parking: 2,
+          image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          badge: "Exclusividade"
+        },
+        {
+          id: 2,
+          title: "Moradia Contemporânea com Piscina e Jardim",
+          location: "Foz do Douro, Porto",
+          price: "1.250.000",
+          condo: "Sem condomínio",
+          area: "350 m²",
+          beds: 4,
+          baths: 5,
+          parking: 4,
+          image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          badge: "Novo"
+        },
+        {
+          id: 3,
+          title: "Apartamento T2 Renovado no Centro Histórico",
+          location: "Baixa, Porto",
+          price: "280.000",
+          condo: "Condomínio: € 45/mês",
+          area: "85 m²",
+          beds: 2,
+          baths: 1,
+          parking: 0,
+          image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+          badge: "Baixou o Preço"
+        }
+      ];
+
+      return (
+        <div className="flex flex-col min-h-screen">
+          
+          {/* HEADER FIXO */}
+          <header className="border-b border-slate-200 py-4 px-6 bg-white z-50 sticky top-0 shadow-sm">
+            <div className="max-w-[1400px] mx-auto flex justify-between items-center">
+              <div className="font-bold text-2xl text-emerald-600">Imobiliária<span className="text-slate-800">Premium</span></div>
+              <nav className="hidden md:flex gap-6 text-sm font-medium text-slate-600">
+                <a href="#" className="hover:text-emerald-600 transition">Comprar</a>
+                <a href="#" className="hover:text-emerald-600 transition">Alugar</a>
+                <a href="#" className="hover:text-emerald-600 transition">Anunciar Imóvel</a>
+              </nav>
+              <div className="flex items-center gap-4">
+                 <button className="hidden md:block text-slate-600 hover:text-emerald-600 font-medium transition">Entrar</button>
+                 <button className="hidden md:block bg-slate-900 text-white px-5 py-2 rounded-lg font-medium hover:bg-slate-800 transition">
+                   Fale Conosco
+                 </button>
+                 <button className="md:hidden text-slate-600"><i className="ph ph-list text-2xl"></i></button>
+              </div>
+            </div>
+          </header>
+
+          {/* HERO SECTION - Orientado ao momento de vida */}
+          <section className="relative h-[600px] flex items-center justify-center">
+            {/* Background Image & Overlay */}
+            <div className="absolute inset-0">
+              <img src="https://images.unsplash.com/photo-1613490908578-812e96495db6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Imóvel de alto padrão" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-slate-900/50"></div>
+            </div>
+
+            {/* Content */}
+            <div className="relative z-10 w-full max-w-4xl px-4 text-center">
+              <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-4 drop-shadow-md tracking-tight">
+                Encontre o seu novo lar <br className="hidden md:block" /> sem dor de cabeça.
+              </h1>
+              <p className="text-lg md:text-xl text-slate-100 mb-8 font-medium drop-shadow">
+                Especialistas em moradias e apartamentos de alto padrão em Porto e Região.
+              </p>
+
+              {/* Search Bar */}
+              <div className="bg-white p-2 rounded-2xl md:rounded-full shadow-2xl flex flex-col md:flex-row gap-2 max-w-3xl mx-auto">
+                <div className="flex-1 flex items-center px-4 py-2 md:border-r border-slate-200">
+                  <i className="ph ph-map-pin text-xl text-emerald-600 mr-2"></i>
+                  <input type="text" placeholder="Qual região você procura?" className="w-full outline-none text-slate-700 bg-transparent placeholder-slate-400 font-medium" />
+                </div>
+                <div className="flex-1 flex items-center px-4 py-2">
+                  <i className="ph ph-house text-xl text-emerald-600 mr-2"></i>
+                  <select className="w-full outline-none text-slate-700 bg-transparent font-medium cursor-pointer">
+                    <option>Qualquer tipo</option>
+                    <option>Apartamento</option>
+                    <option>Moradia / Casa</option>
+                    <option>Cobertura</option>
+                  </select>
+                </div>
+                <button className="bg-emerald-600 text-white font-bold py-3 md:py-4 px-8 rounded-xl md:rounded-full hover:bg-emerald-700 transition w-full md:w-auto mt-2 md:mt-0 shadow-md">
+                  Buscar
+                </button>
+              </div>
+
+              {/* Lifestyle Tags */}
+              <div className="mt-6 flex flex-wrap justify-center gap-3">
+                <span className="text-sm text-white/80 font-medium self-center mr-2 drop-shadow">Sugestões:</span>
+                {['🚇 Perto do Metrô', '🐾 Aceita Pet', '💼 Home Office', '🏊 Com Piscina'].map((tag) => (
+                  <button key={tag} className="bg-white/20 hover:bg-white/30 backdrop-blur-md text-white border border-white/30 text-sm font-medium py-1.5 px-4 rounded-full transition shadow-sm">
+                    {tag}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* BANNER CONCIERGE / PERSONAL HUNTER */}
+          <section className="bg-emerald-600 text-white py-12">
+            <div className="max-w-[1400px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className="md:w-2/3">
+                <h2 className="text-3xl md:text-4xl font-bold mb-3">Cansado de rolar anúncios infinitos?</h2>
+                <p className="text-emerald-100 text-lg">
+                  Diga-nos exatamente o que você sonha. Nosso serviço de <strong>Personal Hunter</strong> procura o imóvel perfeito, negocia valores e cuida de tudo para você. Sem custo extra.
+                </p>
+              </div>
+              <div className="md:w-1/3 w-full flex justify-md-end">
+                <button className="w-full md:w-auto bg-slate-900 text-white font-bold text-lg py-4 px-8 rounded-xl hover:bg-slate-800 transition shadow-xl flex items-center justify-center gap-3 border border-slate-700">
+                  <i className="ph ph-whatsapp-logo text-2xl text-emerald-400"></i> Fale com um Especialista
+                </button>
+              </div>
+            </div>
+          </section>
+
+          {/* COMO FUNCIONA - Fim da Burocracia */}
+          <section className="py-20 bg-white">
+            <div className="max-w-[1400px] mx-auto px-6">
+              <div className="text-center max-w-2xl mx-auto mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Comprar não precisa ser difícil</h2>
+                <p className="text-slate-600 text-lg">Esqueça a dor de cabeça com papelada. Nosso processo é desenhado para ser rápido, seguro e transparente em apenas 3 passos.</p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                {/* Passo 1 */}
+                <div className="text-center p-6 rounded-2xl hover:bg-slate-50 transition">
+                  <div className="w-20 h-20 mx-auto bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 shadow-inner">
+                    <i className="ph ph-magnifying-glass text-4xl"></i>
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">1. Escolha o Imóvel</h3>
+                  <p className="text-slate-600">Navegue pela nossa seleção premium ou deixe que nossos especialistas encontrem a casa ideal para o seu perfil.</p>
+                </div>
+                {/* Passo 2 */}
+                <div className="text-center p-6 rounded-2xl hover:bg-slate-50 transition">
+                  <div className="w-20 h-20 mx-auto bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 shadow-inner">
+                    <i className="ph ph-file-text text-4xl"></i>
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">2. Aprovamos seu Crédito</h3>
+                  <p className="text-slate-600">Nossa equipe jurídica e financeira faz simulações em diversos bancos para conseguir a melhor taxa de juros do mercado para você.</p>
+                </div>
+                {/* Passo 3 */}
+                <div className="text-center p-6 rounded-2xl hover:bg-slate-50 transition">
+                  <div className="w-20 h-20 mx-auto bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 shadow-inner">
+                    <i className="ph ph-key text-4xl"></i>
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">3. Pegue as Chaves</h3>
+                  <p className="text-slate-600">Cuidamos de toda a escritura e registro. Você só precisa assinar e começar a planejar a mudança para o novo lar.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* BAIRROS (Estilo Lifestyle) */}
+          <section className="py-20 bg-slate-50 border-y border-slate-200">
+            <div className="max-w-[1400px] mx-auto px-6">
+              <div className="flex justify-between items-end mb-10">
+                <div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">Conheça as melhores regiões</h2>
+                  <p className="text-slate-600 text-lg">Encontre o bairro que combina perfeitamente com o seu estilo de vida.</p>
+                </div>
+                <button className="hidden md:flex text-emerald-600 font-bold items-center gap-2 hover:text-emerald-700 transition">
+                  Ver todas <i className="ph ph-arrow-right"></i>
+                </button>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {/* Card Bairro 1 */}
+                <div className="relative h-80 rounded-2xl overflow-hidden group cursor-pointer shadow-md">
+                  <img src="https://images.unsplash.com/photo-1555881400-74d704c8cb85?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Vila Nova de Gaia" className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-80 group-hover:opacity-90 transition"></div>
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <h3 className="text-2xl font-bold text-white mb-1">Vila Nova de Gaia</h3>
+                    <p className="text-slate-200 text-sm">Tranquilidade e vista para o rio. Ideal para famílias.</p>
+                  </div>
+                </div>
+                {/* Card Bairro 2 */}
+                <div className="relative h-80 rounded-2xl overflow-hidden group cursor-pointer shadow-md">
+                  <img src="https://images.unsplash.com/photo-1596766324279-cb4a65e0a021?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Foz do Douro" className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-80 group-hover:opacity-90 transition"></div>
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <h3 className="text-2xl font-bold text-white mb-1">Foz do Douro</h3>
+                    <p className="text-slate-200 text-sm">Alto padrão e luxo à beira-mar.</p>
+                  </div>
+                </div>
+                {/* Card Bairro 3 */}
+                <div className="relative h-80 rounded-2xl overflow-hidden group cursor-pointer shadow-md lg:col-span-2">
+                  <img src="https://images.unsplash.com/photo-1518599904199-0ca897819ddb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Baixa do Porto" className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-80 group-hover:opacity-90 transition"></div>
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <h3 className="text-2xl font-bold text-white mb-1">Baixa do Porto</h3>
+                    <p className="text-slate-200 text-sm">Centro histórico, cultura vibrante e excelente para investidores.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* IMÓVEIS EM DESTAQUE (Com os cards aprovados) */}
+          <section className="py-20 bg-white">
+            <div className="max-w-[1400px] mx-auto px-6">
+              <div className="flex justify-between items-end mb-10">
+                <div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">Seleção Premium</h2>
+                  <p className="text-slate-600 text-lg">Os imóveis mais exclusivos e recentes do nosso portfólio.</p>
+                </div>
+                <button className="hidden md:flex bg-slate-100 text-slate-700 font-bold px-6 py-3 rounded-lg items-center gap-2 hover:bg-slate-200 transition">
+                  Ver todos os imóveis
+                </button>
+              </div>
+
+              {/* Grid idêntico ao do catálogo */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {featuredProperties.map((prop) => (
+                  <div key={prop.id} className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer flex flex-col h-full">
+                    
+                    {/* Imagem do Card */}
+                    <div className="relative h-60 overflow-hidden bg-slate-200">
+                      <img src={prop.image} alt={prop.title} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                      
+                      {prop.badge && (
+                        <div className="absolute top-3 left-3 bg-emerald-500 text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-sm">
+                          {prop.badge}
+                        </div>
+                      )}
+                      
+                      <button className="absolute top-3 right-3 p-2 bg-white/90 backdrop-blur-sm rounded-full text-slate-400 hover:text-red-500 transition shadow-sm">
+                        <i className="ph ph-heart text-xl"></i>
+                      </button>
+
+                      <div className="absolute bottom-3 right-3 bg-slate-900/80 text-white text-xs px-2 py-1 rounded-md flex items-center gap-1 backdrop-blur-sm">
+                        <i className="ph ph-camera"></i> 12
+                      </div>
+                    </div>
+
+                    {/* Informações do Card */}
+                    <div className="p-5 flex-1 flex flex-col">
+                      <h3 className="text-3xl font-extrabold text-slate-900 mb-1">€ {prop.price}</h3>
+                      <p className="text-slate-500 text-xs font-medium mb-3">{prop.condo}</p>
+                      
+                      <h4 className="text-lg font-bold text-slate-800 leading-tight mb-2 line-clamp-2 group-hover:text-emerald-600 transition">
+                        {prop.title}
+                      </h4>
+                      <p className="text-slate-500 text-sm flex items-center gap-1 mb-6 mt-auto">
+                        <i className="ph ph-map-pin text-emerald-600 text-lg"></i> {prop.location}
+                      </p>
+                      
+                      {/* Ícones de Características */}
+                      <div className="flex items-center justify-between pt-4 border-t border-slate-100 text-slate-600 font-medium">
+                        <span className="flex items-center gap-1.5"><i className="ph ph-corners-out text-xl text-slate-400"></i> {prop.area}</span>
+                        <span className="flex items-center gap-1.5"><i className="ph ph-bed text-xl text-slate-400"></i> {prop.beds}</span>
+                        <span className="flex items-center gap-1.5"><i className="ph ph-bathtub text-xl text-slate-400"></i> {prop.baths}</span>
+                        <span className="flex items-center gap-1.5"><i className="ph ph-car text-xl text-slate-400"></i> {prop.parking}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              <button className="w-full mt-8 md:hidden bg-slate-100 text-slate-700 font-bold px-6 py-4 rounded-xl items-center justify-center gap-2 hover:bg-slate-200 transition">
+                Ver todos os imóveis
+              </button>
+            </div>
+          </section>
+
+          {/* FOOTER BÁSICO */}
+          <footer className="bg-slate-900 text-slate-300 py-12">
+            <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+              <div>
+                <div className="font-bold text-2xl text-emerald-500 mb-4">Imobiliária<span className="text-white">Premium</span></div>
+                <p className="text-sm text-slate-400 mb-4">Ajudando você a encontrar o imóvel ideal de forma prática, transparente e segura.</p>
+                <p className="text-sm font-semibold text-slate-300">AMI: 12345</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-white mb-4">Links Úteis</h4>
+                <ul className="space-y-2 text-sm">
+                  <li><a href="#" className="hover:text-emerald-400 transition">Comprar Imóvel</a></li>
+                  <li><a href="#" className="hover:text-emerald-400 transition">Arrendar Imóvel</a></li>
+                  <li><a href="#" className="hover:text-emerald-400 transition">Anunciar meu Imóvel</a></li>
+                  <li><a href="#" className="hover:text-emerald-400 transition">Simular Financiamento</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-white mb-4">Regiões</h4>
+                <ul className="space-y-2 text-sm">
+                  <li><a href="#" className="hover:text-emerald-400 transition">Imóveis no Porto</a></li>
+                  <li><a href="#" className="hover:text-emerald-400 transition">Vila Nova de Gaia</a></li>
+                  <li><a href="#" className="hover:text-emerald-400 transition">Matosinhos</a></li>
+                  <li><a href="#" className="hover:text-emerald-400 transition">Gondomar</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-white mb-4">Fale Conosco</h4>
+                <ul className="space-y-3 text-sm">
+                  <li className="flex items-center gap-2"><i className="ph ph-whatsapp-logo text-xl text-emerald-500"></i> +351 912 345 678</li>
+                  <li className="flex items-center gap-2"><i className="ph ph-envelope text-xl text-emerald-500"></i> contato@imobiliariapremium.pt</li>
+                  <li className="flex items-center gap-2"><i className="ph ph-map-pin text-xl text-emerald-500"></i> Av. Boavista, 123 - Porto</li>
+                </ul>
+              </div>
+            </div>
+          </footer>
+
+        </div>
+      );
+    };
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<HomePage />);
+  </script>
+</body>
+</html>
