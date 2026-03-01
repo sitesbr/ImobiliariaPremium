@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apresentação de Imóvel - Alta Conversão</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="bg-slate-50 antialiased">
+  
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const RealEstateLandingPage = () => {
+      return (
+        <div className="min-h-screen bg-white pb-24 lg:pb-0 font-sans text-slate-800">
+          
+          {/* HEADER / NAVEGAÇÃO BÁSICA */}
+          <header className="border-b border-slate-200 py-4 px-6 sticky top-0 bg-white z-40 shadow-sm">
+            <div className="max-w-7xl mx-auto flex justify-between items-center">
+              <div className="font-bold text-2xl text-emerald-600">Imobiliária<span className="text-slate-800">Premium</span></div>
+              <nav className="hidden md:flex gap-6 text-sm font-medium text-slate-600">
+                <a href="#" className="hover:text-emerald-600 transition">Comprar</a>
+                <a href="#" className="hover:text-emerald-600 transition">Alugar</a>
+                <a href="#" className="hover:text-emerald-600 transition">Anunciar</a>
+              </nav>
+            </div>
+          </header>
+
+          {/* GALERIA HERO (ABOVE THE FOLD) */}
+          <div className="max-w-7xl mx-auto p-4 pt-6">
+            <div className="relative grid grid-cols-1 md:grid-cols-4 gap-2 rounded-2xl overflow-hidden h-[400px] md:h-[500px]">
+              <div className="md:col-span-3 bg-slate-200 relative group cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Sala principal" className="w-full h-full object-cover transition duration-500 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-black bg-opacity-10 group-hover:bg-opacity-20 transition"></div>
+              </div>
+              <div className="hidden md:grid grid-rows-2 gap-2">
+                <div className="bg-slate-200 relative overflow-hidden cursor-pointer group">
+                  <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cozinha" className="w-full h-full object-cover transition duration-500 group-hover:scale-105" />
+                </div>
+                <div className="bg-slate-200 relative overflow-hidden cursor-pointer group">
+                  <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Quarto" className="w-full h-full object-cover transition duration-500 group-hover:scale-105" />
+                </div>
+              </div>
+              <button className="absolute bottom-4 right-4 bg-white px-4 py-2 rounded-lg shadow-md font-semibold text-sm flex items-center gap-2 hover:bg-slate-50 transition">
+                <i className="ph ph-camera text-lg"></i> Ver todas as 24 fotos
+              </button>
+              <div className="absolute top-4 right-4 flex gap-2">
+                <button className="bg-white p-2 rounded-full shadow-md hover:bg-slate-50 transition text-slate-600"><i className="ph ph-share-network text-xl"></i></button>
+                <button className="bg-white p-2 rounded-full shadow-md hover:bg-slate-50 transition text-slate-600 hover:text-red-500"><i className="ph ph-heart text-xl"></i></button>
+              </div>
+            </div>
+          </div>
+
+          {/* CONTEÚDO PRINCIPAL E SIDEBAR */}
+          <div className="max-w-7xl mx-auto p-4 grid grid-cols-1 lg:grid-cols-3 gap-10">
+            
+            {/* COLUNA ESQUERDA (Detalhes do Imóvel) */}
+            <div className="lg:col-span-2 space-y-12">
+              
+              <div>
+                <h1 className="text-3xl font-bold text-slate-900 mb-2 leading-tight">
+                  Apartamento T3 com Varanda Gourmet e Vista Mar
+                </h1>
+                <p className="text-slate-500 mb-6 flex items-center gap-2 text-lg">
+                  <i className="ph ph-map-pin text-emerald-600 text-xl"></i> Avenida Atlântica, Vila Nova de Gaia
+                </p>
+                
+                <div className="flex flex-col sm:flex-row sm:items-end gap-2 sm:gap-6 mb-8">
+                  <h2 className="text-5xl font-extrabold text-slate-900">€ 450.000</h2>
+                  <div className="text-sm text-slate-500 font-medium pb-1 flex gap-4">
+                    <span>Condomínio: <strong className="text-slate-700">€ 120/mês</strong></span>
+                    <span>IMI: <strong className="text-slate-700">€ 450/ano</strong></span>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-6 py-5 border-y border-slate-200">
+                  <span className="flex items-center gap-2 text-slate-700 font-medium text-lg"><i className="ph ph-corners-out text-xl text-slate-400"></i> 120 m²</span>
+                  <span className="flex items-center gap-2 text-slate-700 font-medium text-lg"><i className="ph ph-bed text-xl text-slate-400"></i> 3 Quartos</span>
+                  <span className="flex items-center gap-2 text-slate-700 font-medium text-lg"><i className="ph ph-bathtub text-xl text-slate-400"></i> 2 Banhos</span>
+                  <span className="flex items-center gap-2 text-slate-700 font-medium text-lg"><i className="ph ph-car text-xl text-slate-400"></i> 2 Vagas</span>
+                  
+                  <button className="ml-auto flex items-center gap-2 text-emerald-600 font-bold hover:text-emerald-700 transition bg-emerald-50 px-4 py-2 rounded-lg">
+                    <i className="ph ph-file-text text-lg"></i> Ver Planta Baixa
+                  </button>
+                </div>
+              </div>
+
+              <section>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4">Sobre o Imóvel</h3>
+                <div className="prose prose-slate max-w-none text-slate-600 leading-relaxed space-y-4 text-lg">
+                  <p>Imagine acordar todos os dias com a luz da manhã a iluminar a sua sala e uma vista desafogada para o mar. Este apartamento T3 foi desenhado para quem valoriza espaço, conforto e localização premium.</p>
+                  <p>Com uma sala ampla integrada à varanda gourmet, é o ambiente perfeito para receber amigos e família. Acabamentos de luxo, ar-condicionado central e pronto a habitar.</p>
+                </div>
+              </section>
+
+              <section>
+                <h3 className="text-2xl font-bold text-slate-900 mb-6">Comodidades</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
+                  {[
+                    'Ar-condicionado central', 'Armários embutidos', 
+                    'Varanda com churrasqueira', 'Piscina no condomínio',
+                    'Ginásio equipado', 'Portaria 24 horas'
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-center gap-3 text-slate-700">
+                      <i className="ph ph-check-circle text-xl text-emerald-500"></i>
+                      <span className="text-lg">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              <section>
+                <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                  <i className="ph ph-play-circle text-[28px] text-emerald-600"></i> Conheça em Detalhes
+                </h3>
+                <div className="aspect-video w-full bg-slate-100 rounded-2xl overflow-hidden shadow-md border border-slate-200">
+                  <div className="w-full h-full flex flex-col items-center justify-center text-slate-400 bg-slate-800 relative group cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Video Thumbnail" className="absolute inset-0 w-full h-full object-cover opacity-50" />
+                    <i className="ph ph-play-circle text-[64px] text-white z-10 group-hover:scale-110 transition duration-300 drop-shadow-lg"></i>
+                    <span className="mt-4 text-white font-medium z-10 drop-shadow-md">Assistir ao Tour Virtual</span>
+                  </div>
+                </div>
+              </section>
+
+              <section>
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">Localização</h3>
+                <p className="text-slate-600 mb-6 text-lg">Avenida Atlântica, Vila Nova de Gaia</p>
+                <div className="h-[350px] w-full bg-slate-200 rounded-2xl flex items-center justify-center shadow-inner relative overflow-hidden mb-6">
+                   <span className="text-slate-600 font-medium z-10 bg-white/80 px-4 py-2 rounded-lg backdrop-blur-sm">Mapa Interativo API</span>
+                   <div className="absolute inset-0 bg-cover bg-center opacity-40" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')" }}></div>
+                </div>
+                
+                <h4 className="font-semibold text-slate-800 mb-3 text-lg">O que tem por perto?</h4>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-slate-700">
+                  <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-1">
+                    <span className="text-xl">🛒</span> <span className="font-semibold">Supermercado</span> <span>3 min a pé</span>
+                  </div>
+                  <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-1">
+                    <span className="text-xl">🚇</span> <span className="font-semibold">Estação Metrô</span> <span>8 min a pé</span>
+                  </div>
+                  <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-1">
+                    <span className="text-xl">🏫</span> <span className="font-semibold">Escola Primária</span> <span>5 min a pé</span>
+                  </div>
+                  <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-1">
+                    <span className="text-xl">🌳</span> <span className="font-semibold">Parque</span> <span>10 min a pé</span>
+                  </div>
+                </div>
+              </section>
+
+              <section className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-8 border border-emerald-100 shadow-sm">
+                <h3 className="text-2xl font-bold text-slate-900 mb-2 flex items-center gap-2">
+                  <i className="ph ph-calculator text-[28px] text-emerald-600"></i> Simulador de Financiamento
+                </h3>
+                <p className="text-slate-600 mb-6">Descubra o valor estimado das parcelas para este imóvel.</p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <div className="flex-1">
+                    <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Entrada (€)</label>
+                    <input type="text" defaultValue="90.000" className="w-full p-4 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-lg font-medium" />
+                  </div>
+                  <div className="flex-1">
+                    <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Prazo</label>
+                    <select className="w-full p-4 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none bg-white text-lg">
+                      <option>30 anos</option>
+                      <option>35 anos</option>
+                      <option>40 anos</option>
+                    </select>
+                  </div>
+                  <div className="flex items-end">
+                    <button className="w-full sm:w-auto bg-slate-900 text-white font-bold py-4 px-8 rounded-xl hover:bg-slate-800 transition shadow-md">
+                      Simular
+                    </button>
+                  </div>
+                </div>
+              </section>
+
+            </div>
+
+            {/* COLUNA DIREITA (Formulário e Corretor - Desktop Sticky) */}
+            <div className="hidden lg:block relative">
+              <div className="sticky top-24 bg-white p-6 rounded-2xl shadow-xl border border-slate-200">
+                 
+                 <div className="flex items-center gap-4 mb-6 pb-6 border-b border-slate-100">
+                   <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="João Silva" className="w-16 h-16 rounded-full object-cover shadow-sm border border-slate-200" />
+                   <div>
+                     <h4 className="font-bold text-lg text-slate-900">João Silva</h4>
+                     <p className="text-sm text-slate-500">Consultor Imobiliário | AMI 12345</p>
+                   </div>
+                 </div>
+
+                 <h5 className="font-semibold text-slate-800 mb-4">Ficou interessado?</h5>
+                 
+                 <form className="space-y-4 mb-6">
+                   <input type="text" placeholder="Seu Nome" className="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-emerald-500 outline-none transition" />
+                   <input type="tel" placeholder="Seu Telefone" className="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-emerald-500 outline-none transition" />
+                   <input type="email" placeholder="Seu E-mail" className="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-emerald-500 outline-none transition" />
+                   <textarea placeholder="Olá, tenho interesse neste imóvel..." rows="3" className="w-full p-3 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-emerald-500 outline-none transition resize-none"></textarea>
+                   <button type="button" className="w-full bg-slate-900 text-white font-bold py-3 px-4 rounded-lg hover:bg-slate-800 transition shadow-md">
+                     Agendar Visita
+                   </button>
+                 </form>
+
+                 <div className="relative flex items-center py-2 mb-4">
+                    <div className="flex-grow border-t border-slate-200"></div>
+                    <span className="flex-shrink-0 mx-4 text-slate-400 text-sm font-medium">OU</span>
+                    <div className="flex-grow border-t border-slate-200"></div>
+                 </div>
+
+                 <button className="w-full bg-[#25D366] text-white font-bold py-3 px-4 rounded-lg hover:bg-[#20b858] transition shadow-md flex items-center justify-center gap-2">
+                   <i className="ph ph-whatsapp-logo text-xl"></i> Falar no WhatsApp
+                 </button>
+                 <p className="text-center text-xs text-slate-500 mt-4 flex items-center justify-center gap-1">
+                   <span className="text-orange-500">⚡</span> Costuma responder em 10 minutos
+                 </p>
+
+              </div>
+            </div>
+
+          </div>
+
+          {/* MOBILE STICKY FOOTER */}
+          <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 p-4 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] z-50 lg:hidden flex items-center justify-between gap-4">
+            <div className="flex-1">
+              <p className="text-xs text-slate-500 font-medium">Preço</p>
+              <p className="text-xl font-extrabold text-slate-900 leading-none">€ 450.000</p>
+            </div>
+            <div className="flex gap-2">
+              <button className="bg-slate-100 text-slate-700 p-3 rounded-xl border border-slate-200 hover:bg-slate-200 transition">
+                <i className="ph ph-phone text-xl"></i>
+              </button>
+              <button className="bg-[#25D366] text-white font-bold py-3 px-6 rounded-xl hover:bg-[#20b858] transition shadow-md flex items-center gap-2">
+                <i className="ph ph-whatsapp-logo text-xl"></i> <span className="hidden sm:inline">WhatsApp</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      );
+    };
+
+    // Renderiza o componente na div com id="root"
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<RealEstateLandingPage />);
+  </script>
+</body>
+</html>
